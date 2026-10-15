@@ -1,29 +1,21 @@
+// 1. Bagian Import
+import React, { useState } from 'react';
 import './App.css';
 
+// 2. Bagian Fungsi Komponen
 function App() {
+  const [skor, setSkor] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="container">
+      <h1>Selamat Datang di Aplikasi Saya!</h1>
+      <p>Anda telah mengklik sebanyak {skor} kali.</p>
+      <button onClick={() => setSkor(skor + 1)}>
+        Klik Saya
+      </button>
     </div>
   );
 }
 
+// 3. Bagian Export
 export default App;
