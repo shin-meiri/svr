@@ -1,31 +1,274 @@
-.App {
-  text-align: center;
+/* Variabel Warna Global & Efek */
+:root {
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --dark: #0f172a;
+  --gray-text: #64748b;
+  --bg-light: #f8fafc;
+  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
+.home-wrapper {
   min-height: 100vh;
+  background-color: var(--bg-light);
+  color: var(--dark);
+}
+
+/* 1. NAVBAR STYLES */
+.navbar {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  padding: 1.5rem 8%;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.nav-logo span {
+  color: var(--primary);
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2.5rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--gray-text);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--dark);
+}
+
+.btn-contact {
+  padding: 0.6rem 1.3rem;
+  border-radius: 50px;
+  border: 1px solid var(--primary);
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-contact:hover {
+  background: var(--primary);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* 2. HERO SECTION STYLES */
+.hero-section {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  align-items: center;
+  gap: 4rem;
+  padding: 5rem 8%;
+  max-width: 1400px;
+  margin: 0 auto;
 }
 
-.heart {
-  color: #ff0000;
+.badge {
+  background: #eeeffe;
+  color: var(--primary);
+  padding: 0.4rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.5rem;
 }
 
-.small {
-  font-size: 0.75rem;
+.hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-content h1 span {
+  color: var(--primary);
+  background: linear-gradient(to right, #6366f1, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-content p {
+  color: var(--gray-text);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.hero-cta {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: white;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+  transition: background 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  color: var(--dark);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.btn-secondary:hover {
+  color: var(--primary);
+}
+
+/* Hero Visual Kanan */
+.hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+  height: 350px;
+  border-radius: 24px;
+  position: relative;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  width: 80%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.glass-card h3 { margin-bottom: 0.5rem; }
+.glass-card p { font-size: 0.9rem; color: var(--gray-text); margin-bottom: 1rem;}
+
+.progress-bar {
+  background: #e2e8f0;
+  height: 6px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: var(--primary);
+  height: 100%;
+  width: 95%;
+  animation: loadProgress 2s ease-out forwards;
+}
+
+@keyframes loadProgress {
+  from { width: 0%; }
+  to { width: 95%; }
+}
+
+/* 3. SERVICES SECTION STYLES */
+.services-section {
+  padding: 6rem 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 4rem auto;
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.section-header p {
+  color: var(--gray-text);
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid #f1f5f9;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+}
+
+.icon-box {
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  display: inline-block;
+}
+
+.service-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.75rem;
+}
+
+.service-card p {
+  color: var(--gray-text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* 4. FOOTER STYLES */
+.footer {
+  text-align: center;
+  padding: 3rem;
+  border-top: 1px solid #e2e8f0;
+  color: var(--gray-text);
+  font-size: 0.9rem;
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 968px) {
+  .hero-section {
+    grid-template-columns: 1fr;
+    text-align: center;
+    padding: 3rem 5%;
+  }
+  .hero-content h1 { font-size: 2.5rem; }
+  .badge, .hero-cta { justify-content: center; margin: 0 auto 1.5rem auto; }
+  .navbar { padding: 1.2rem 5%; }
+  .nav-links { display: none; } /* Menyembunyikan menu standar di mobile */
 }
