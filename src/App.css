@@ -1,32 +1,297 @@
-/* 3. STYLE UNTUK GALERI GRID 50 GAMBAR */
+/* VARIABEL WARNA ALAM & EFEK TRANSPARAN */
+:root {
+  --neon-green: #4ade80;
+  --emerald: #10b981;
+  --dark-bg: #060b09;
+  --glass-bg: rgba(15, 23, 20, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --text-light: #f3f4f6;
+  --text-muted: #9ca3af;
+  --card-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+/* BASE WRAPPER DENGAN SCREEN CINEMATIC LAYOUT */
+.nature-wrapper {
+  min-height: 100vh;
+  background-color: var(--dark-bg);
+  background-image: linear-gradient(to bottom, rgba(6, 11, 9, 0.8), rgba(6, 11, 9, 0.98)), 
+                    url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-light);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* EFEK CAHAYA GLOW DI BELAKANG PANEL */
+.ambient-light-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.12) 0%, rgba(0,0,0,0) 70%);
+  top: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+.ambient-light-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.08) 0%, rgba(0,0,0,0) 70%);
+  bottom: 20%;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* 1. NAVBAR GLASSMORPHISM */
+.glass-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 8%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+
+.nav-logo span {
+  color: var(--neon-green);
+  text-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.nav-menu {
+  display: flex;
+  list-style: none;
+  gap: 3rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-menu a {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.nav-menu a:hover, .nav-menu a.active {
+  color: var(--text-light);
+}
+
+.btn-premium {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-light);
+  border: 1px solid var(--glass-border);
+  padding: 0.6rem 1.4rem;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-premium:hover {
+  background: var(--text-light);
+  color: var(--dark-bg);
+}
+
+/* 2. HERO SECTION LAYOUT */
+.nature-hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 4rem;
+  padding: 5rem 8%;
+  max-width: 1400px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.nature-badge {
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.15);
+  color: var(--neon-green);
+  padding: 0.4rem 1.2rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text-card h1 {
+  font-size: 3.5rem;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text-card h1 span {
+  background: linear-gradient(to right, #4ade80, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-text-card p {
+  color: var(--text-muted);
+  font-size: 1.15rem;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.cta-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.btn-explore {
+  background: linear-gradient(135deg, var(--neon-green), var(--emerald));
+  color: #040806;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+  transition: all 0.3s;
+}
+
+.btn-explore:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(16, 185, 129, 0.4);
+}
+
+.btn-link {
+  color: var(--text-light);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.btn-link:hover {
+  color: var(--neon-green);
+}
+
+/* 3. MONITORING PANEL (DASHBOARD) */
+.glass-dashboard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  border: 1px solid var(--glass-border);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: var(--card-shadow);
+}
+
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.dash-header h3 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.live-indicator {
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--neon-green);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+}
+
+.dash-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.2rem;
+  border-radius: 12px;
+}
+
+.stat-num {
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--neon-green);
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-container {
+  background: rgba(255, 255, 255, 0.1);
+  height: 6px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  background: linear-gradient(to right, var(--emerald), var(--neon-green));
+  height: 100%;
+  width: 94%;
+}
+
+/* 4. GALLERY GRID SECTIONS */
 .gallery-section {
-  padding: 4rem 8% 6rem 8%;
+  padding: 2rem 8% 6rem 8%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
 .gallery-header {
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 3.5rem;
 }
 
 .gallery-header h2 {
   font-size: 2.2rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
-  background: linear-gradient(to right, #ffffff, #9ca3af);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .gallery-header p {
   color: var(--text-muted);
 }
 
-/* Mengatur susunan grid otomatis yang fleksibel (Mobile & Desktop ramah) */
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1.5rem;
 }
 
@@ -35,15 +300,16 @@
   border: 1px solid var(--glass-border);
   border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
   transition: all 0.3s ease;
 }
 
 .image-container {
   position: relative;
   width: 100%;
-  padding-top: 65%; /* Menjaga rasio gambar tetap proporsional (16:9 look) */
+  padding-top: 65%; /* Rasio Aspek Gambar Dinamis */
   overflow: hidden;
+  background: #0b100e;
 }
 
 .image-container img {
@@ -53,22 +319,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* EFEK HOVER: Gambar membesar perlahan saat kursor di atasnya */
 .gallery-card:hover img {
-  transform: scale(1.1) rotate(1deg);
+  transform: scale(1.08);
 }
 
-/* Memunculkan overlay teks transparan di atas gambar saat di-hover */
 .image-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to top, rgba(6, 11, 9, 0.8) 0%, rgba(0,0,0,0) 60%);
+  background: linear-gradient(to top, rgba(4, 8, 6, 0.85) 0%, rgba(0,0,0,0) 60%);
   display: flex;
   align-items: flex-end;
   padding: 1rem;
@@ -81,24 +345,30 @@
 }
 
 .image-overlay span {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--neon-green);
-  letter-spacing: 0.5px;
 }
 
 .gallery-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(74, 222, 128, 0.3);
-  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.15);
+  transform: translateY(-4px);
+  border-color: rgba(74, 222, 128, 0.25);
+  box-shadow: 0 15px 30px rgba(16, 185, 129, 0.1);
 }
 
-/* 4. FOOTER STYLE */
+/* 5. FOOTER STYLES */
 .nature-footer {
   text-align: center;
   padding: 2.5rem;
   border-top: 1px solid var(--glass-border);
   color: var(--text-muted);
   font-size: 0.85rem;
-  background: rgba(4, 8, 6, 0.5);
+}
+
+/* RESPONSIVE LAYOUT BREAKPOINTS */
+@media (max-width: 1024px) {
+  .nature-hero { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+  .hero-text-card h1 { font-size: 2.6rem; }
+  .cta-wrapper { justify-content: center; }
+  .nav-menu { display: none; }
 }
