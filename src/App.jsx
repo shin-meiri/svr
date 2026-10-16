@@ -2,78 +2,93 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [likes, setLikes] = useState(0)
+  const [activeTab, setActiveTab] = useState('all')
 
   return (
-    <div className="home-wrapper">
-      {/* 1. NAVIGATION BAR */}
-      <nav className="navbar">
-        <div className="nav-logo">Dev<span>Studio</span></div>
-        <ul className="nav-links">
-          <li><a href="#hero" className="active">Home</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#about">About</a></li>
+    <div className="nature-wrapper">
+      {/* BACKGROUND GRAPHIC ELEMENTS */}
+      <div className="ambient-light-1"></div>
+      <div className="ambient-light-2"></div>
+
+      {/* 1. PREMIUM HEADER / NAVIGATION */}
+      <nav className="glass-nav">
+        <div className="nav-logo">
+          🌿 Terra<span>UHD</span>
+        </div>
+        <ul className="nav-menu">
+          <li><a href="#home" className="active">Eksplorasi</a></li>
+          <li><a href="#gallery">Galeri 8K</a></li>
+          <li><a href="#about">Konservasi</a></li>
         </ul>
-        <button className="btn-contact">Get Started</button>
+        <button className="btn-premium">Unduh Wallpaper</button>
       </nav>
 
-      {/* 2. HERO SECTION */}
-      <header id="hero" className="hero-section">
-        <div className="hero-content">
-          <span className="badge">Welcome to the Future</span>
-          <h1>Bangun Aplikasi Impian Anda Lebih <span>Cepat & Modern</span></h1>
-          <p>Kami membantu Anda menciptakan pengalaman digital yang luar biasa dengan teknologi web terdepan, performa maksimal, dan desain yang memikat pengguna.</p>
+      {/* 2. HERO CONTENT SECTION */}
+      <main id="home" className="nature-hero">
+        <div className="hero-text-card">
+          <span className="nature-badge">✨ Imersif Ultra HD 8K</span>
+          <h1>Rasakan Kemegahan <span>Alam Liar</span> Dari Layar Anda</h1>
+          <p>
+            Bawa keheningan hutan berkabut, kemegahan puncak gunung es, dan kedalaman samudra langsung ke ruang digital Anda dengan ketajaman visual tanpa kompromi.
+          </p>
           
-          <div className="hero-cta">
-            <button className="btn-primary" onClick={() => setLikes(likes + 1)}>
-              ❤️ Beri Apresiasi ({likes})
-            </button>
-            <a href="#services" className="btn-secondary">Pelajari Fitur</a>
+          <div className="cta-wrapper">
+            <button className="btn-explore">Mulai Penjelajahan</button>
+            <button className="btn-link">Video Sinematik ↗</button>
           </div>
         </div>
-        
-        {/* Visual Card Kanan */}
-        <div className="hero-visual">
-          <div className="glass-card">
-            <h3>⚡ Performa Kilat</h3>
-            <p>Dioptimalkan penuh menggunakan React + Vite untuk kecepatan rendering terbaik.</p>
-            <div className="progress-bar"><div className="progress-fill"></div></div>
+
+        {/* 3. INTERACTIVE STATS CONTROLLER (GLASSMORPHISM) */}
+        <div className="glass-dashboard">
+          <div className="dash-header">
+            <h3>📊 Monitor Keasrian Lingkungan</h3>
+            <span className="live-indicator">LIVE</span>
+          </div>
+          <p className="dash-desc">Data real-time area lindung dan reboisasi global tahun {new Date().getFullYear()}.</p>
+          
+          <div className="stats-grid">
+            <div className="stat-box">
+              <span className="stat-num">98.4%</span>
+              <span className="stat-lbl">Kualitas Udara Hutan</span>
+            </div>
+            <div className="stat-box">
+              <span className="stat-num">12.5k</span>
+              <span className="stat-lbl">Pohon Ditanam Hari Ini</span>
+            </div>
+          </div>
+
+          <div className="eco-progress">
+            <div className="progress-text">
+              <span>Target Konservasi Global</span>
+              <span>85%</span>
+            </div>
+            <div className="progress-bar-container">
+              <div className="progress-bar-fill"></div>
+            </div>
           </div>
         </div>
-      </header>
+      </main>
 
-      {/* 3. SERVICES / FEATURES SECTION */}
-      <section id="services" className="services-section">
-        <div className="section-header">
-          <h2>Layanan Unggulan Kami</h2>
-          <p>Solusi digital menyeluruh untuk membantu perkembangan bisnis dan ide kreatif Anda.</p>
-        </div>
-
-        <div className="services-grid">
-          <div className="service-card">
-            <div className="icon-box">🎨</div>
-            <h3>Modern UI/UX</h3>
-            <p>Desain antarmuka yang bersih, intuitif, dan memanjakan mata pengguna.</p>
+      {/* 4. ECO-FEATURES SECTION */}
+      <section id="gallery" className="features-section">
+        <div className="features-grid">
+          <div className="feature-card">
+            <div className="card-icon">🏔️</div>
+            <h4>Pegunungan Alpine</h4>
+            <p>Puncak bersalju abadi yang diabadikan pada golden hour dengan akurasi warna gamut Rec.2020.</p>
           </div>
-
-          <div className="service-card">
-            <div className="icon-box">📱</div>
-            <h3>Responsive Design</h3>
-            <p>Tampilan yang fleksibel dan tetap sempurna diakses dari HP, Tablet, maupun PC.</p>
+          <div className="feature-card">
+            <div className="card-icon">🪵</div>
+            <h4>Hutan Hujan Tropis</h4>
+            <p>Detail dedaunan mikroskopis dan partikel embun pagi yang menangkap atmosfer kedamaian murni.</p>
           </div>
-
-          <div className="service-card">
-            <div className="icon-box">🚀</div>
-            <h3>SEO Optimized</h3>
-            <p>Struktur kode yang ramah mesin pencari untuk menaikkan peringkat website Anda.</p>
+          <div className="feature-card">
+            <div className="card-icon">🌊</div>
+            <h4>Pesisir Samudra</h4>
+            <p>Deburan ombak berkecepatan tinggi yang ditangkap dengan detail kristal air beresolusi super.</p>
           </div>
         </div>
       </section>
-
-      {/* 4. FOOTER */}
-      <footer className="footer">
-        <p>&copy; {new Date().getFullYear()} DevStudio. All rights reserved.</p>
-      </footer>
     </div>
   )
 }
