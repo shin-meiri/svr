@@ -2,93 +2,90 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [activeTab, setActiveTab] = useState('all')
+  const [likes, setLikes] = useState(0)
+
+  // Membuat array berisi angka 1 sampai 50 secara otomatis
+  const totalGambar = Array.from({ length: 50 }, (_, i) => i + 1)
 
   return (
     <div className="nature-wrapper">
-      {/* BACKGROUND GRAPHIC ELEMENTS */}
       <div className="ambient-light-1"></div>
       <div className="ambient-light-2"></div>
 
       {/* 1. PREMIUM HEADER / NAVIGATION */}
       <nav className="glass-nav">
-        <div className="nav-logo">
-          🌿 Terra<span>UHD</span>
-        </div>
+        <div className="nav-logo">🌿 Terra<span>UHD</span></div>
         <ul className="nav-menu">
           <li><a href="#home" className="active">Eksplorasi</a></li>
           <li><a href="#gallery">Galeri 8K</a></li>
-          <li><a href="#about">Konservasi</a></li>
         </ul>
-        <button className="btn-premium">Unduh Wallpaper</button>
+        <button className="btn-premium">Unduh Semua</button>
       </nav>
 
-      {/* 2. HERO CONTENT SECTION */}
+      {/* 2. HERO SECTION */}
       <main id="home" className="nature-hero">
         <div className="hero-text-card">
           <span className="nature-badge">✨ Imersif Ultra HD 8K</span>
           <h1>Rasakan Kemegahan <span>Alam Liar</span> Dari Layar Anda</h1>
-          <p>
-            Bawa keheningan hutan berkabut, kemegahan puncak gunung es, dan kedalaman samudra langsung ke ruang digital Anda dengan ketajaman visual tanpa kompromi.
-          </p>
-          
+          <p>Bawa keheningan hutan berkabut, kemegahan puncak gunung, dan kedalaman samudra langsung ke ruang digital Anda dengan ketajaman visual 8K UHD tanpa kompromi.</p>
           <div className="cta-wrapper">
-            <button className="btn-explore">Mulai Penjelajahan</button>
-            <button className="btn-link">Video Sinematik ↗</button>
+            <button className="btn-explore" onClick={() => setLikes(likes + 1)}>
+              ❤️ Apresiasi Galeri ({likes})
+            </button>
+            <a href="#gallery" className="btn-link">Lihat Koleksi ↓</a>
           </div>
         </div>
 
-        {/* 3. INTERACTIVE STATS CONTROLLER (GLASSMORPHISM) */}
+        {/* MONITORING PANEL */}
         <div className="glass-dashboard">
           <div className="dash-header">
-            <h3>📊 Monitor Keasrian Lingkungan</h3>
-            <span className="live-indicator">LIVE</span>
+            <h3>📊 Status Server Galeri</h3>
+            <span className="live-indicator">ONLINE</span>
           </div>
-          <p className="dash-desc">Data real-time area lindung dan reboisasi global tahun {new Date().getFullYear()}.</p>
-          
+          <p className="dash-desc">Data muatan aset gambar resolusi tinggi asset server saat ini.</p>
           <div className="stats-grid">
             <div className="stat-box">
-              <span className="stat-num">98.4%</span>
-              <span className="stat-lbl">Kualitas Udara Hutan</span>
+              <span className="stat-num">50</span>
+              <span className="stat-lbl">Total File Gambar</span>
             </div>
             <div className="stat-box">
-              <span className="stat-num">12.5k</span>
-              <span className="stat-lbl">Pohon Ditanam Hari Ini</span>
-            </div>
-          </div>
-
-          <div className="eco-progress">
-            <div className="progress-text">
-              <span>Target Konservasi Global</span>
-              <span>85%</span>
-            </div>
-            <div className="progress-bar-container">
-              <div className="progress-bar-fill"></div>
+              <span className="stat-num">8K</span>
+              <span className="stat-lbl">Resolusi Maksimal</span>
             </div>
           </div>
         </div>
       </main>
 
-      {/* 4. ECO-FEATURES SECTION */}
-      <section id="gallery" className="features-section">
-        <div className="features-grid">
-          <div className="feature-card">
-            <div className="card-icon">🏔️</div>
-            <h4>Pegunungan Alpine</h4>
-            <p>Puncak bersalju abadi yang diabadikan pada golden hour dengan akurasi warna gamut Rec.2020.</p>
-          </div>
-          <div className="feature-card">
-            <div className="card-icon">🪵</div>
-            <h4>Hutan Hujan Tropis</h4>
-            <p>Detail dedaunan mikroskopis dan partikel embun pagi yang menangkap atmosfer kedamaian murni.</p>
-          </div>
-          <div className="feature-card">
-            <div className="card-icon">🌊</div>
-            <h4>Pesisir Samudra</h4>
-            <p>Deburan ombak berkecepatan tinggi yang ditangkap dengan detail kristal air beresolusi super.</p>
-          </div>
+      {/* 3. DYNAMIC 8K GALLERY GRID (50 GAMBAR) */}
+      <section id="gallery" className="gallery-section">
+        <div className="gallery-header">
+          <h2>Koleksi Visual Alam Terpilih</h2>
+          <p>Jelajahi 50 sudut keindahan bumi berspesifikasi Ultra High Definition.</p>
+        </div>
+
+        <div className="gallery-grid">
+          {totalGambar.map((nomor) => (
+            <div key={nomor} className="gallery-card">
+              <div className="image-container">
+                {/* Menampilkan gambar 1.jpg sampai 50.jpg berdasarkan perulangan */}
+                <img 
+                  src={`/images/${nomor}.jpg`} 
+                  alt={`Keindahan Alam Ke-${nomor}`}
+                  loading="lazy" // Membuat loading website lebih ringan
+                />
+                <div className="image-overlay">
+                  <span>Nature UHD #{nomor}</span>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
+
+      {/* 4. FOOTER */}
+      <footer className="nature-footer">
+        <p>&copy; {new Date().getFullYear()} TerraUHD Server. Tersimpan aman di direktori Debian.</p>
+      </footer>
     </div>
   )
 }
