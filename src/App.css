@@ -1,274 +1,332 @@
-/* Variabel Warna Global & Efek */
+/* PENGATURAN WARNA ALAM PREMIUM */
 :root {
-  --primary: #6366f1;
-  --primary-hover: #4f46e5;
-  --dark: #0f172a;
-  --gray-text: #64748b;
-  --bg-light: #f8fafc;
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+  --neon-green: #4ade80;
+  --emerald: #10b981;
+  --dark-bg: #060b09;
+  --glass-bg: rgba(15, 23, 20, 0.45);
+  --glass-border: rgba(255, 255, 255, 0.07);
+  --text-light: #f3f4f6;
+  --text-muted: #9ca3af;
 }
 
-.home-wrapper {
+/* CONTAINER UTAMA DENGAN BACKGROUND CINEMATIC */
+.nature-wrapper {
   min-height: 100vh;
-  background-color: var(--bg-light);
-  color: var(--dark);
+  background-color: var(--dark-bg);
+  /* Latar belakang alam berkabut gelap untuk efek kedalaman kontras tinggi */
+  background-image: linear-gradient(to bottom, rgba(6, 11, 9, 0.75), rgba(6, 11, 9, 0.95)), 
+                    url('https://unsplash.com');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--text-light);
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  position: relative;
 }
 
-/* 1. NAVBAR STYLES */
-.navbar {
+/* CAHAYA AMBIENT DI BELAKANG LAYAR (EFEK GLOW) */
+.ambient-light-1 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(0,0,0,0) 70%);
+  top: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+.ambient-light-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 70%);
+  bottom: 10%,;
+  right: -100px;
+  pointer-events: none;
+}
+
+/* 1. NAVBAR GLASSMORPHISM */
+.glass-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 8%;
-  background: rgba(255, 255, 255, 0.8);
-  backdrop-filter: blur(10px);
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
   position: sticky;
   top: 0;
   z-index: 100;
-  border-bottom: 1px solid #f1f5f9;
 }
 
 .nav-logo {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.5px;
 }
 
 .nav-logo span {
-  color: var(--primary);
+  color: var(--neon-green);
+  text-shadow: 0 0 15px rgba(74, 222, 128, 0.5);
 }
 
-.nav-links {
+.nav-menu {
   display: flex;
   list-style: none;
-  gap: 2.5rem;
+  gap: 3rem;
 }
 
-.nav-links a {
+.nav-menu a {
+  color: var(--text-muted);
   text-decoration: none;
-  color: var(--gray-text);
   font-weight: 500;
-  transition: color 0.3s;
+  transition: all 0.3s;
 }
 
-.nav-links a:hover, .nav-links a.active {
-  color: var(--dark);
+.nav-menu a:hover, .nav-menu a.active {
+  color: var(--text-light);
+  text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-.btn-contact {
-  padding: 0.6rem 1.3rem;
+.btn-premium {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-light);
+  border: 1px solid var(--glass-border);
+  padding: 0.6rem 1.4rem;
   border-radius: 50px;
-  border: 1px solid var(--primary);
-  background: transparent;
-  color: var(--primary);
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s;
 }
 
-.btn-contact:hover {
-  background: var(--primary);
-  color: white;
+.btn-premium:hover {
+  background: var(--text-light);
+  color: var(--dark-bg);
+  box-shadow: 0 0 20px rgba(255,255,255,0.2);
 }
 
-/* 2. HERO SECTION STYLES */
-.hero-section {
+/* 2. HERO LAYOUT */
+.nature-hero {
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
   gap: 4rem;
-  padding: 5rem 8%;
+  padding: 6rem 8% 4rem 8%;
   max-width: 1400px;
   margin: 0 auto;
+  align-items: center;
 }
 
-.badge {
-  background: #eeeffe;
-  color: var(--primary);
-  padding: 0.4rem 1rem;
+.nature-badge {
+  background: rgba(74, 222, 128, 0.1);
+  border: 1px solid rgba(74, 222, 128, 0.2);
+  color: var(--neon-green);
+  padding: 0.4rem 1.2rem;
   border-radius: 50px;
   font-size: 0.85rem;
   font-weight: 600;
   display: inline-block;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.hero-content h1 {
-  font-size: 3.5rem;
+.hero-text-card h1 {
+  font-size: 3.8rem;
   line-height: 1.15;
   font-weight: 800;
-  letter-spacing: -1px;
+  letter-spacing: -1.5px;
   margin-bottom: 1.5rem;
 }
 
-.hero-content h1 span {
-  color: var(--primary);
-  background: linear-gradient(to right, #6366f1, #a855f7);
+.hero-text-card h1 span {
+  background: linear-gradient(to right, #4ade80, #10b981);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.hero-content p {
-  color: var(--gray-text);
-  font-size: 1.15rem;
+.hero-text-card p {
+  color: var(--text-muted);
+  font-size: 1.2rem;
   line-height: 1.7;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
 }
 
-.hero-cta {
+.cta-wrapper {
   display: flex;
-  align-items: center;
   gap: 1.5rem;
+  align-items: center;
 }
 
-.btn-primary {
-  background: var(--primary);
-  color: white;
-  padding: 0.9rem 2rem;
-  border-radius: 8px;
+.btn-explore {
+  background: linear-gradient(135deg, var(--neon-green), var(--emerald));
+  color: #030712;
+  padding: 1rem 2.2rem;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.4);
+  transition: all 0.3s;
+}
+
+.btn-explore:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 15px 30px -5px rgba(16, 185, 129, 0.6);
+}
+
+.btn-link {
+  background: transparent;
+  color: var(--text-light);
   border: none;
   font-weight: 600;
   cursor: pointer;
-  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
-  transition: background 0.3s, transform 0.2s;
-}
-
-.btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
-.btn-secondary {
-  color: var(--dark);
-  text-decoration: none;
-  font-weight: 600;
   transition: color 0.3s;
 }
 
-.btn-secondary:hover {
-  color: var(--primary);
+.btn-link:hover {
+  color: var(--neon-green);
 }
 
-/* Hero Visual Kanan */
-.hero-visual {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
-  height: 350px;
+/* 3. GLASSMORPHISM DASHBOARD (PANEL MONITORING) */
+.glass-dashboard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid var(--glass-border);
+  padding: 2.5rem;
   border-radius: 24px;
-  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-.glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  padding: 2rem;
-  border-radius: 16px;
-  box-shadow: var(--card-shadow);
-  width: 80%;
-  border: 1px solid rgba(255, 255, 255, 0.5);
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
 }
 
-.glass-card h3 { margin-bottom: 0.5rem; }
-.glass-card p { font-size: 0.9rem; color: var(--gray-text); margin-bottom: 1rem;}
+.dash-header h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
 
-.progress-bar {
-  background: #e2e8f0;
-  height: 6px;
+.live-indicator {
+  background: rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.dash-desc {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.stat-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  padding: 1.25rem;
+  border-radius: 14px;
+}
+
+.stat-num {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--neon-green);
+  margin-bottom: 0.25rem;
+}
+
+.stat-lbl {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.progress-bar-container {
+  background: rgba(255, 255, 255, 0.1);
+  height: 8px;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.progress-fill {
-  background: var(--primary);
+.progress-bar-fill {
+  background: linear-gradient(to right, var(--emerald), var(--neon-green));
   height: 100%;
-  width: 95%;
-  animation: loadProgress 2s ease-out forwards;
+  width: 85%;
+  border-radius: 10px;
 }
 
-@keyframes loadProgress {
-  from { width: 0%; }
-  to { width: 95%; }
-}
-
-/* 3. SERVICES SECTION STYLES */
-.services-section {
-  padding: 6rem 8%;
+/* 4. GRID FITUR BAWAH */
+.features-section {
+  padding: 2rem 8% 6rem 8%;
   max-width: 1400px;
   margin: 0 auto;
 }
 
-.section-header {
-  text-align: center;
-  max-width: 600px;
-  margin: 0 auto 4rem auto;
-}
-
-.section-header h2 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.section-header p {
-  color: var(--gray-text);
-}
-
-.services-grid {
+.features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
 }
 
-.service-card {
-  background: white;
-  padding: 2.5rem 2rem;
+.feature-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--glass-border);
+  padding: 2rem;
   border-radius: 16px;
-  box-shadow: var(--card-shadow);
-  border: 1px solid #f1f5f9;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 
-.service-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.1);
+.feature-card:hover {
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-4px);
+  border-color: rgba(74, 222, 128, 0.2);
 }
 
-.icon-box {
+.card-icon {
   font-size: 2rem;
-  margin-bottom: 1.5rem;
-  display: inline-block;
+  margin-bottom: 1rem;
 }
 
-.service-card h3 {
-  font-size: 1.3rem;
-  margin-bottom: 0.75rem;
+.feature-card h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
 
-.service-card p {
-  color: var(--gray-text);
+.feature-card p {
+  color: var(--text-muted);
   font-size: 0.95rem;
   line-height: 1.6;
 }
 
-/* 4. FOOTER STYLES */
-.footer {
-  text-align: center;
-  padding: 3rem;
-  border-top: 1px solid #e2e8f0;
-  color: var(--gray-text);
-  font-size: 0.9rem;
-}
-
-/* RESPONSIVE BREAKPOINTS */
-@media (max-width: 968px) {
-  .hero-section {
+/* LAYOUT RESPONSIF (MOBILE FRIENDLY) */
+@media (max-width: 1024px) {
+  .nature-hero {
     grid-template-columns: 1fr;
     text-align: center;
-    padding: 3rem 5%;
+    gap: 3rem;
   }
-  .hero-content h1 { font-size: 2.5rem; }
-  .badge, .hero-cta { justify-content: center; margin: 0 auto 1.5rem auto; }
-  .navbar { padding: 1.2rem 5%; }
-  .nav-links { display: none; } /* Menyembunyikan menu standar di mobile */
+  .hero-text-card h1 { font-size: 2.8rem; }
+  .cta-wrapper { justify-content: center; }
+  .nav-menu { display: none; }
 }
