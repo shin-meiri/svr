@@ -4,15 +4,15 @@ import './App.css'
 function App() {
   const [likes, setLikes] = useState(0)
 
-  // Membuat array berisi angka 1 sampai 50 secara otomatis
-  const totalGambar = Array.from({ length: 50 }, (_, i) => i + 1)
+  // Membuat array 1-50 secara eksplisit agar aman saat dikompilasi
+  const totalGambar = Array.from({ length: 50 }, (_, index) => index + 1)
 
   return (
     <div className="nature-wrapper">
       <div className="ambient-light-1"></div>
       <div className="ambient-light-2"></div>
 
-      {/* 1. PREMIUM HEADER / NAVIGATION */}
+      {/* 1. NAVBAR */}
       <nav className="glass-nav">
         <div className="nav-logo">🌿 Terra<span>UHD</span></div>
         <ul className="nav-menu">
@@ -56,7 +56,7 @@ function App() {
         </div>
       </main>
 
-      {/* 3. DYNAMIC 8K GALLERY GRID (50 GAMBAR) */}
+      {/* 3. DYNAMIC GALLERY GRID WITH PROTECTION */}
       <section id="gallery" className="gallery-section">
         <div className="gallery-header">
           <h2>Koleksi Visual Alam Terpilih</h2>
@@ -64,14 +64,14 @@ function App() {
         </div>
 
         <div className="gallery-grid">
-          {totalGambar.map((nomor) => (
+          {/* Tambahkan pengecekan && agar tidak crash jika array belum siap */}
+          {totalGambar && totalGambar.map((nomor) => (
             <div key={nomor} className="gallery-card">
               <div className="image-container">
-                {/* Menampilkan gambar 1.jpg sampai 50.jpg berdasarkan perulangan */}
                 <img 
                   src={`/images/${nomor}.jpg`} 
                   alt={`Keindahan Alam Ke-${nomor}`}
-                  loading="lazy" // Membuat loading website lebih ringan
+                  loading="lazy" 
                 />
                 <div className="image-overlay">
                   <span>Nature UHD #{nomor}</span>
@@ -91,4 +91,3 @@ function App() {
 }
 
 export default App
-
