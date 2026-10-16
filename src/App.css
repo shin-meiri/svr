@@ -102,3 +102,12 @@
   font-size: 0.85rem;
   background: rgba(4, 8, 6, 0.5);
 }
+.ambient-light-2 {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(74, 222, 128, 0.1) 0%, rgba(0,0,0,0) 70%);
+  bottom: 10%; /* Selesai diperbaiki, tidak ada koma di ujung */
+  right: -100px;
+  pointer-events: none;
+}
