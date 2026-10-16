@@ -4,7 +4,7 @@ import './App.css'
 function App() {
   const [likes, setLikes] = useState(0)
 
-  // Membuat array berisi angka 1 sampai 50 secara otomatis
+  // Membuat daftar angka 1 sampai 50 secara aman
   const totalGambar = Array.from({ length: 50 }, (_, i) => i + 1)
 
   return (
@@ -22,41 +22,45 @@ function App() {
         <button className="btn-premium">Unduh Semua</button>
       </nav>
 
-      {/* 2. HERO SECTION */}
+      {/* 2. HERO CONTENT SECTION */}
       <main id="home" className="nature-hero">
         <div className="hero-text-card">
           <span className="nature-badge">✨ Imersif Ultra HD 8K</span>
           <h1>Rasakan Kemegahan <span>Alam Liar</span> Dari Layar Anda</h1>
-          <p>Bawa keheningan hutan berkabut, kemegahan puncak gunung, dan kedalaman samudra langsung ke ruang digital Anda dengan ketajaman visual 8K UHD tanpa kompromi.</p>
+          <p>
+            Bawa keheningan hutan berkabut, kemegahan puncak gunung es, dan kedalaman samudra langsung ke ruang digital Anda dengan ketajaman visual tanpa kompromi.
+          </p>
+          
           <div className="cta-wrapper">
             <button className="btn-explore" onClick={() => setLikes(likes + 1)}>
-              ❤️ Apresiasi Galeri ({likes})
+              ❤️ Apresiasi ({likes})
             </button>
             <a href="#gallery" className="btn-link">Lihat Koleksi ↓</a>
           </div>
         </div>
 
-        {/* MONITORING PANEL */}
+        {/* 3. INTERACTIVE STATS CONTROLLER (GLASSMORPHISM) */}
         <div className="glass-dashboard">
           <div className="dash-header">
             <h3>📊 Status Server Galeri</h3>
             <span className="live-indicator">ONLINE</span>
           </div>
-          <p className="dash-desc">Data muatan aset gambar resolusi tinggi asset server saat ini.</p>
+          <p className="dash-desc">Data muatan aset gambar resolusi tinggi server saat ini.</p>
+          
           <div className="stats-grid">
             <div className="stat-box">
               <span className="stat-num">50</span>
-              <span className="stat-lbl">Total File Gambar</span>
+              <span className="stat-lbl">Total Gambar</span>
             </div>
             <div className="stat-box">
               <span className="stat-num">8K</span>
-              <span className="stat-lbl">Resolusi Maksimal</span>
+              <span className="stat-lbl">Resolusi Gambar</span>
             </div>
           </div>
         </div>
       </main>
 
-      {/* 3. DYNAMIC 8K GALLERY GRID (50 GAMBAR) */}
+      {/* 4. SAFE DYNAMIC GALLERY GRID (50 GAMBAR) */}
       <section id="gallery" className="gallery-section">
         <div className="gallery-header">
           <h2>Koleksi Visual Alam Terpilih</h2>
@@ -67,11 +71,15 @@ function App() {
           {totalGambar.map((nomor) => (
             <div key={nomor} className="gallery-card">
               <div className="image-container">
-                {/* Menampilkan gambar 1.jpg sampai 50.jpg berdasarkan perulangan */}
+                {/* Proteksi error: Jika gambar gagal dimuat, ia tidak akan membuat web blank putih */}
                 <img 
                   src={`/images/${nomor}.jpg`} 
-                  alt={`Keindahan Alam Ke-${nomor}`}
-                  loading="lazy" // Membuat loading website lebih ringan
+                  alt={`Keindahan Alam #${nomor}`}
+                  loading="lazy"
+                  onError={(e) => {
+                    e.target.onerror = null; 
+                    e.target.src = 'https://placehold.co+' + nomor;
+                  }}
                 />
                 <div className="image-overlay">
                   <span>Nature UHD #{nomor}</span>
@@ -82,9 +90,9 @@ function App() {
         </div>
       </section>
 
-      {/* 4. FOOTER */}
+      {/* 5. FOOTER */}
       <footer className="nature-footer">
-        <p>&copy; {new Date().getFullYear()} TerraUHD Server. Tersimpan aman di direktori Debian.</p>
+        <p>&copy; {new Date().getFullYear()} TerraUHD Server. Tersimpan di direktori Debian.</p>
       </footer>
     </div>
   )
